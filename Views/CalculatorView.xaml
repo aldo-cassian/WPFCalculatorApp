@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPFCalculatorApp.Views.CalculatorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:WPFCalculatorApp.ViewModels"
+        xmlns:local="clr-namespace:WPFCalculatorApp" 
+        mc:Ignorable="d"
+        Title="Calculator" Height="450" Width="300">
+    <Window.DataContext>
+        <vm:CalculatorViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Enable textbox entry and validate the data using ValidationRule-->
+        <TextBox Text="{Binding Display}" FontSize="32" Margin="0,0,0,5" TextAlignment="Right" IsReadOnly="True"/>
+        
+        <UniformGrid Grid.Row="1" Columns="4">
+            <!--Dummy buttons to maintain aesthetic look-->
+            <Button IsEnabled="False"/>
+            <Button IsEnabled="False"/>
+            <Button IsEnabled="False"/>
+            <Button Content="C" Command="{Binding ClearCommand}" FontWeight="Bold" Background="IndianRed"/>
+
+            <Button Content="7" Command="{Binding DigitCommand}" CommandParameter="7"/>
+            <Button Content="8" Command="{Binding DigitCommand}" CommandParameter="8"/>
+            <Button Content="9" Command="{Binding DigitCommand}" CommandParameter="9"/>
+            <Button Content="/" Command="{Binding OperationCommand}" CommandParameter="/"/>
+
+            <Button Content="4" Command="{Binding DigitCommand}" CommandParameter="4"/>
+            <Button Content="5" Command="{Binding DigitCommand}" CommandParameter="5"/>
+            <Button Content="6" Command="{Binding DigitCommand}" CommandParameter="6"/>
+            <Button Content="*" Command="{Binding OperationCommand}" CommandParameter="*"/>
+
+            <Button Content="1" Command="{Binding DigitCommand}" CommandParameter="1"/>
+            <Button Content="2" Command="{Binding DigitCommand}" CommandParameter="2"/>
+            <Button Content="3" Command="{Binding DigitCommand}" CommandParameter="3"/>
+            <Button Content="-" Command="{Binding OperationCommand}" CommandParameter="-"/>
+
+            <Button Content="." Command="{Binding DigitCommand}" CommandParameter="."/>
+            <Button Content="0" Command="{Binding DigitCommand}" CommandParameter="0"/>
+            <Button Content="=" Command="{Binding EqualCommand}" FontWeight="Bold" Background="CornflowerBlue"/>
+            <Button Content="+" Command="{Binding OperationCommand}" CommandParameter="+"/>
+        </UniformGrid>
+    </Grid>
+</Window>
